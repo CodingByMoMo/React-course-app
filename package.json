@@ -1,0 +1,27 @@
+{
+  "name": "react-course-app",
+  "version": "1.0.0",
+  "description": "App from udemy course.",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "19.6.0",
+    "npm": "9.5.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingByMoMo/React-coures-app.git"
+  },
+  "author": "CodingByMoMo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodingByMoMo/React-coures-app/issues"
+  },
+  "homepage": "https://github.com/CodingByMoMo/React-coures-app#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
