@@ -1,13 +1,19 @@
-FROM node
+# Make container from  node image
+# Node Version used v19.6.0
+# Check version with package.json 
+FROM node:19.6
 
-WORKDIR /the/workdir/path
+# Default catalog on container
+WORKDIR /server
 
-COPY package.json ./
+# Copy package and package-lock
+COPY package*.json ./
 
 RUN npm install
 
-COPY ./ ./
+# Copy source code
+COPY . .
 
-ENV PORT=8080
+ENV PORT=5000
 
-CMD ["npm", "start"]
+CMD ["node", "./src/index.js"]
