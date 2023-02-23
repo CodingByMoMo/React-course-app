@@ -14,6 +14,8 @@ RUN npm install
 # Copy source code
 COPY . .
 
-ENV PORT=5000
+ENV PORT=20402
+
+EXPOSE 20402
 
 CMD ["node", "./src/index.js"]
