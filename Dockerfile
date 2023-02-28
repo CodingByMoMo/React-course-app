@@ -18,6 +18,4 @@ ENV PORT=5000
 
 EXPOSE 5000
 
-RUN ls
-
 CMD ["node", "./src/index.js"]
