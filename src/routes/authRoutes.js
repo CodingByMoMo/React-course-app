@@ -1,6 +1,6 @@
 import passport from "passport";
 
-const authRoutes = app => {
+const auth_routes = (app) => {
   // Make call to google oauth and authenticate.
   app.get(
     "/auth/google",
@@ -13,4 +13,4 @@ const authRoutes = app => {
   app.get("/auth/google/callback", passport.authenticate("google"));
 };
 
-export {authRoutes};
+export { auth_routes };
