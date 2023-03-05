@@ -20,7 +20,7 @@ services:
     image: mongo
     restart: always
     volumes:
-      - ./data:/data/db
+      - /var/lib/mongodb/data/react_db:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: admin
@@ -33,7 +33,7 @@ services:
     image: mongo-express
     restart: always
     volumes:
-      - ./data:/data/db
+      - /var/lib/mongodb/data/react_db:/data/db
     ports:
       - 8081:8081
     environment:
