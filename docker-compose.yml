@@ -2,17 +2,19 @@
 version: '3.1'
 
 services:
-#  node:
-#    image: "node:19.6"
-#    user: "node"
-#    working_dir: /server
-#    environment:
-#      - NODE_ENV=production
-#    volumes:
-#      - /projects/React-coures-app:/server
-#    expose:
-#      - "5000"
-#    command: "npm start"
+  node:
+    image: "node:19.6"
+    user: "node"
+    working_dir: /server
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /projects/React-coures-app:/server
+    expose:
+      - "5000"
+    ports:
+      - 20402:5000
+    command: "npm start"
 
   mongo:
     image: mongo
