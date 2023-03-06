@@ -41,6 +41,8 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
       ME_CONFIG_MONGODB_URL: mongodb://root:admin@mongo:27017/
       ME_CONFIG_SITE_BASEURL: /mongoadmin
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+      ME_CONFIG_OPTIONS_EDITORTHEME: midnight
     networks:
       - main-net
 networks:
