@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const Schema = mongoose.Schema();
+const { Schema } = mongoose;
 
 const new_user_schema = () => {
   const user_schema = new Schema({
