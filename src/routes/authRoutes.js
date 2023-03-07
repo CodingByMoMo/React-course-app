@@ -1,16 +1,15 @@
 import passport from "passport";
+import express from "express";
 
-const auth_routes = (app) => {
-  // Make call to google oauth and authenticate.
-  app.get(
-    "/auth/google",
-    passport.authenticate("google", {
-      scope: ["profile", "email"],
-    })
-  );
+const auth_router = express.Router();
 
-  //Get a profile and access token.
-  app.get("/auth/google/callback", passport.authenticate("google"));
-};
+auth_router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+);
 
-export { auth_routes };
+auth_router.get("/auth/google/callback", passport.authenticate("google"));
+
+export { auth_router };
