@@ -11,5 +11,5 @@ passport_config();
 const app = express();
 app.use("/auth", auth_router);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 20402;
 app.listen(PORT);

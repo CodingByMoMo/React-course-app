@@ -3,6 +3,11 @@ import express from "express";
 
 const auth_router = express.Router();
 
+auth_router.use((req, res, next) => {
+  console.log('Action on: ', Date.now())
+  next()
+})
+
 auth_router.get("/google", (req, res) => {
   res.send(
     passport.authenticate("google", {

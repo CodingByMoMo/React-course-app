@@ -8,6 +8,7 @@ services:
     working_dir: /server
     environment:
       - NODE_ENV=production
+      - PORT=20402
     volumes:
       - /projects/React-coures-app:/server
     expose:
