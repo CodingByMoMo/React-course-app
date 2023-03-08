@@ -8,17 +8,19 @@ auth_router.use((req, res, next) => {
   next()
 })
 
-auth_router.get("/google", (req, res) => {
-  res.send(
-    passport.authenticate("google", {
-      scope: ["profile", "email"],
-    })
-  );
+auth_router.get("/google", (req, res, next) => {
+  // res.send(
+  //   passport.authenticate("google", {
+  //     scope: ["profile", "email"],
+  //   })
+  // );
+  console.log("Router Working");
+  res.end();
 });
 
-auth_router.get("/google/callback", (req, res) => {
-  res.send(passport.authenticate("google"));
-});
+// auth_router.get("/google/callback", (req, res) => {
+//   res.send(passport.authenticate("google"));
+// });
 
 // // define the home page route
 // auth_router.get('/', (req, res) => {
