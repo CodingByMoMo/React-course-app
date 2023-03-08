@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/auth/google", (req, res) => {
-  res.send("route works");
+  res.send("hello world");
 });
 
 const PORT = process.env.PORT || 5000;
