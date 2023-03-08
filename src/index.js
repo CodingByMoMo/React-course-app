@@ -10,8 +10,12 @@ new_user_schema();
 passport_config();
 const app = express();
 //app.use(auth_router);
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+
 app.get("/auth/google", (req, res) => {
-    console.log("route works");
+  res.send("route works");
 });
 
 const PORT = process.env.PORT || 5000;
