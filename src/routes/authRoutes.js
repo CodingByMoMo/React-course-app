@@ -8,7 +8,7 @@ auth_router.use((req, res, next) => {
   next()
 })
 
-auth_router.get("/google", (req, res, next) => {
+auth_router.get("/auth/google", (req, res, next) => {
   // res.send(
   //   passport.authenticate("google", {
   //     scope: ["profile", "email"],
@@ -18,7 +18,7 @@ auth_router.get("/google", (req, res, next) => {
   res.end();
 });
 
-// auth_router.get("/google/callback", (req, res) => {
+// auth_router.get("/auth/google/callback", (req, res) => {
 //   res.send(passport.authenticate("google"));
 // });
 
