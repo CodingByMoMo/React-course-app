@@ -5,7 +5,7 @@ const auth_router = express.Router();
 
 auth_router.use((req, res, next) => {
   console.log('Action on: ', Date.now())
-  next()
+  next();
 })
 
 auth_router.get("/auth/google", (req, res, next) => {

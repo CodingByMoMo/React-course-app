@@ -9,7 +9,10 @@ mongoose.connect(mongoDB_base_URI);
 new_user_schema();
 passport_config();
 const app = express();
-app.use(auth_router);
+//app.use(auth_router);
+app.get("/auth/google", (req, res) => {
+    console.log("route works");
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
