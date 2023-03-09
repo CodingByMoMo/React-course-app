@@ -8,19 +8,22 @@ auth_router.use((req, res, next) => {
   next();
 })
 
+auth_router.get("/", (req,res, next) => {
+  res.send("Hello World");
+});
+
 auth_router.get("/auth/google", (req, res, next) => {
-  // res.send(
-  //   passport.authenticate("google", {
-  //     scope: ["profile", "email"],
-  //   })
-  // );
-  console.log("Router Working");
+  res.send(
+    passport.authenticate("google", {
+      scope: ["profile", "email"],
+    })
+  );
   res.end();
 });
 
-// auth_router.get("/auth/google/callback", (req, res) => {
-//   res.send(passport.authenticate("google"));
-// });
+auth_router.get("/auth/google/callback", (req, res) => {
+  res.send(passport.authenticate("google"));
+});
 
 // // define the home page route
 // auth_router.get('/', (req, res) => {
