@@ -12,13 +12,14 @@ auth_router.get("/", (req,res, next) => {
   res.send("Hello World");
 });
 
-auth_router.use("/auth/google", (req, res, next) => {
-  passport.authenticate("google", {
-    scope: ["profile", "email"]
-  });
+auth_router.get("/auth/google", (req, res, next) => {
+  res.send("auth call");
+  // passport.authenticate("google", {
+  //   scope: ["profile", "email"]
+  // });
 });
 
-auth_router.use("/auth/google/callback", (req, res) => {
+auth_router.get("/auth/google/callback", (req, res) => {
   passport.authenticate("google");
 });
 
