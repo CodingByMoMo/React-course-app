@@ -14,8 +14,8 @@ auth_router.get("/", (req,res, next) => {
 
 auth_router.use("/auth/google", (req, res, next) => {
   passport.authenticate("google", {
-    scope: ["profile", "email"],
-  })
+    scope: ["profile", "email"]
+  });
 });
 
 auth_router.use("/auth/google/callback", (req, res) => {
