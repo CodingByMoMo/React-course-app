@@ -13,16 +13,13 @@ auth_router.get("/", (req,res, next) => {
 });
 
 auth_router.get("/auth/google", (req, res, next) => {
-  res.send(
-    passport.authenticate("google", {
-      scope: ["profile", "email"],
-    })
-  );
-  res.end();
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
 });
 
 auth_router.get("/auth/google/callback", (req, res) => {
-  res.send(passport.authenticate("google"));
+  passport.authenticate("google");
 });
 
 // // define the home page route
