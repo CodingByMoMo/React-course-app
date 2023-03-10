@@ -19,7 +19,9 @@ auth_router.get(
   })
 );
 
-auth_router.get("/auth/google/callback", passport.authenticate("google"));
+auth_router.get("/auth/google/callback", passport.authenticate("google", { failureRedirect: '/login' }), (req, res) => {
+  res.redirect("/");
+});
 
 // // define the home page route
 // auth_router.get('/', (req, res) => {

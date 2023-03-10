@@ -14,7 +14,7 @@ const passport_config = () => {
         callbackURL: "/auth/google/callback",
       },
       (accessToken, refreshToken, profile, done) => {
-        //new user_class({ google_ID: profile.id }).save();
+        new user_class({ google_ID: profile.id }).save();
         console.log("Ok");
       }
     )
