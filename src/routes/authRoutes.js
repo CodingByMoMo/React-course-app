@@ -9,7 +9,7 @@ auth_router.use((req, res, next) => {
 });
 
 auth_router.get("/", (req, res, next) => {
-  res.send("Hello World");
+  res.send("Hello World 🔥");
 });
 
 auth_router.get(
