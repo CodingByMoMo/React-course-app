@@ -19,7 +19,7 @@ auth_router.get(
   })
 );
 
-auth_router.get("/auth/google/callback", passport.authenticate("google", { failureRedirect: '/login' }), (req, res) => {
+auth_router.get("/auth/google/callback", passport.authenticate("google"), (req, res) => {
   res.redirect("/");
 });
 
