@@ -16,19 +16,10 @@ auth_router.get(
   "/auth/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
-  }),
-  (req, res) => {
-    res.status(200);
-  }
+  })
 );
 
-auth_router.get(
-  "/auth/google/callback",
-  passport.authenticate("google"),
-  (req, res) => {
-    res.redirect("/~");
-  }
-);
+auth_router.get("/auth/google/callback", passport.authenticate("google"));
 
 // // define the home page route
 // auth_router.get('/', (req, res) => {
