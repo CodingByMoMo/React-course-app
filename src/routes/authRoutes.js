@@ -23,13 +23,4 @@ auth_router.get("/auth/google/callback", passport.authenticate("google", { failu
   res.redirect("/");
 });
 
-// // define the home page route
-// auth_router.get('/', (req, res) => {
-//   res.send('Birds home page')
-// })
-// // define the about route
-// auth_router.get('/about', (req, res) => {
-//   res.send('About birds')
-// })
-
 export { auth_router };
