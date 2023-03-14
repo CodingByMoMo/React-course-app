@@ -25,10 +25,13 @@ const passport_config = () => {
         User_class.findOne({ googleId: profile.id }).then((existing_user) => {
           if (existing_user) {
             //  There is a user in Database.
+            done(null,existing_user);
           } else {
             //  There is no user in Database.
             //  Create new user and save it to Database.
-            new User_class({ googleId: profile.id }).save();
+            new User_class({ googleId: profile.id })
+            .save()
+            .then(user => done(null, user));
           }
         });
       }
