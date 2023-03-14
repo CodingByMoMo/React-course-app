@@ -20,9 +20,7 @@ const app = express();
 app.use(
   session({
     secret: "MoMo is love",
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: true },
+    cookie: {},
   })
 );
 app.use(auth_router);
