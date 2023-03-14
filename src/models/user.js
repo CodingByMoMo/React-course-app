@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-const { Schema } = mongoose;
 /**
  * @author CodingByMoMo
  * @description This function creates new schema for mongoDB Database.
