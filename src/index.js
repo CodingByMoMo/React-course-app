@@ -4,6 +4,7 @@ import { new_user_schema } from "./models/user.js";
 import { mongoDB_base_URI } from "./config/keys.js";
 import { passport_config } from "./service/passport.js";
 import { auth_router } from "./routes/authRoutes.js ";
+import session from "express-session";
 
 //  Inti connection with MongoDB
 mongoose.connect(mongoDB_base_URI);
@@ -16,6 +17,14 @@ passport_config();
 
 // Create express app and use auth router.
 const app = express();
+app.use(
+  session({
+    secret: "MoMo is love",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true },
+  })
+);
 app.use(auth_router);
 
 const PORT = process.env.PORT || 5000;
