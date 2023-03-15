@@ -28,13 +28,18 @@ auth_router.get(
   "/auth/google/callback",
   passport.authenticate("google"),
   (req, res) => {
-    //  Redirect to root.
+    //  Redirect to root :fire:.
     res.redirect("/api/current_user");
   }
 );
 
+auth_router.get("/logout", (req, res) => {
+  req.logout();
+  res.send("You are log out! :rocket:");
+});
+
 auth_router.get("/api/current_user", (req, res) => {
   res.send(req.user);
-})
+});
 
 export { auth_router };
