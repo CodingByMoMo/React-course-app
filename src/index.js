@@ -1,10 +1,12 @@
-import express, { json } from "express";
+import express from "express";
 import mongoose from "mongoose";
 import { new_user_schema } from "./models/user.js";
 import { mongoDB_base_URI } from "./config/keys.js";
 import { passport_config } from "./service/passport.js";
 import { auth_router } from "./routes/authRoutes.js ";
-import session from "express-session";
+import cookieSession from "cookie-session";
+import { cookieKey } from "./config/keys.js";
+import passport from "passport";
 
 //  Inti connection with MongoDB
 mongoose.connect(mongoDB_base_URI);
@@ -15,14 +17,18 @@ new_user_schema();
 //  Configure passport.
 passport_config();
 
-// Create express app and use auth router.
+// Create express app.
 const app = express();
-app.use(
-  session({
-    secret: "MoMo is love",
-    cookie: {},
-  })
-);
+//  init session manager with cookie-session
+app.use(cookieSession({
+    maxAge: 2*60*60*1000,
+    keys: [cookieKey]
+}));
+
+//  Init passport session.
+app.use(passport.initialize());
+app.use(passport.session());
+//  Use authentication route.
 app.use(auth_router);
 
 const PORT = process.env.PORT || 5000;

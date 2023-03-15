@@ -11,6 +11,20 @@ import { google_client_ID, google_client_secret } from "../config/keys.js";
 const passport_config = () => {
   //  This class loads user data schema.
   const User_class = mongoose.model("users");
+  //  Serialization of the user.
+  //  Use record to turn it into Id.
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
+
+  //  Deserialization of user
+  //  Use Id to turn into user record.
+  passport.deserializeUser((id, done) => {
+    User_class.findById(id).then((user) => {
+      done(null, user);
+    });
+  });
+
   passport.use(
     //  Here we create a new google auth strategy.
     //  And define key and secret to authentication.
@@ -25,13 +39,13 @@ const passport_config = () => {
         User_class.findOne({ googleId: profile.id }).then((existing_user) => {
           if (existing_user) {
             //  There is a user in Database.
-            done(null,existing_user);
+            done(null, existing_user);
           } else {
             //  There is no user in Database.
             //  Create new user and save it to Database.
             new User_class({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
+              .save()
+              .then((user) => done(null, user));
           }
         });
       }
