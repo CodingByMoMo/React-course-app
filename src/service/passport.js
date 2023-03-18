@@ -32,7 +32,7 @@ const passport_config = () => {
       {
         clientID: google_client_ID,
         clientSecret: google_client_secret,
-        callbackURL: "/auth/google/callback",
+        callbackURL: "https://app.momocodes.com/auth/google/callback",
       },
       (accessToken, refreshToken, profile, done) => {
         //  Find a document in database with this Google ID.
