@@ -6,9 +6,8 @@ services:
     image: "node:19.6"
     user: "node"
     working_dir: /server
-    environment:
-      - NODE_ENV=production
-      - PORT=5000
+    env_file:
+      - ./prod.env
     volumes:
       - /projects/React-coures-app:/server
     expose:

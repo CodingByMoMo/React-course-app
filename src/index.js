@@ -5,7 +5,7 @@ import { mongoDB_base_URI } from "./config/keys.js";
 import { passport_config } from "./service/passport.js";
 import { auth_router } from "./routes/authRoutes.js ";
 import cookieSession from "cookie-session";
-import { cookieKey } from "./config/keys.js";
+import { cookie_key } from "./config/keys.js";
 import passport from "passport";
 
 //  Inti connection with MongoDB
@@ -22,7 +22,7 @@ const app = express();
 //  init session manager with cookie-session
 app.use(cookieSession({
     maxAge: 2*60*60*1000,
-    keys: [cookieKey]
+    keys: [cookie_key]
 }));
 
 //  Init passport session.
