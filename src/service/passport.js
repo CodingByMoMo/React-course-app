@@ -1,7 +1,11 @@
 import passport from "passport";
 import mongoose from "mongoose";
 import { Strategy as Google_strategy } from "passport-google-oauth20";
-import { google_client_ID, google_client_secret } from "../config/keys.js";
+import {
+  google_client_ID,
+  google_client_secret,
+  callback_URL,
+} from "../config/keys.js";
 
 /**
  * @author CodingByMoMo
@@ -25,6 +29,13 @@ const passport_config = () => {
     });
   });
 
+  var callbackURL;
+  if (process.env.NODE_ENV === "production") {
+    callbackURL = callback_URL;
+  } else {
+    callbackURL = "/auth/google/callback";
+  }
+
   passport.use(
     //  Here we create a new google auth strategy.
     //  And define key and secret to authentication.
@@ -32,7 +43,7 @@ const passport_config = () => {
       {
         clientID: google_client_ID,
         clientSecret: google_client_secret,
-        callbackURL: "https://app.momocodes.com/auth/google/callback",
+        callbackURL: callbackURL,
       },
       (accessToken, refreshToken, profile, done) => {
         //  Find a document in database with this Google ID.
