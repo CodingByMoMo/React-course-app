@@ -45,20 +45,20 @@ const passport_config = () => {
         clientSecret: google_client_secret,
         callbackURL: callbackURL,
       },
-      (accessToken, refreshToken, profile, done) => {
+      async (accessToken, refreshToken, profile, done) => {
         //  Find a document in database with this Google ID.
-        User_class.findOne({ googleId: profile.id }).then((existing_user) => {
-          if (existing_user) {
-            //  There is a user in Database.
-            done(null, existing_user);
-          } else {
-            //  There is no user in Database.
-            //  Create new user and save it to Database.
-            new User_class({ googleId: profile.id })
-              .save()
-              .then((user) => done(null, user));
-          }
+        const existing_user = await User_class.findOne({
+          googleId: profile.id,
         });
+        if (existing_user) {
+          //  There is a user in Database.
+          done(null, existing_user);
+        } else {
+          //  There is no user in Database.
+          //  Create new user and save it to Database.
+          const user = await new User_class({ googleId: profile.id }).save();
+          done(null, user);
+        }
       }
     )
   );
