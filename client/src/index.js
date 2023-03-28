@@ -7,6 +7,9 @@ import { legacy_createStore, applyMiddleware } from "redux";
 import App from "./components/App.js";
 import reportWebVitals from "./reportWebVitals.js";
 import reducers from "./reducers/index.js";
+//  Import MaterializeCSS
+import "materialize-css/dist/css/materialize.min.css";
+
 
 //  Create store for Redux
 const store = legacy_createStore(reducers, {}, applyMiddleware());
