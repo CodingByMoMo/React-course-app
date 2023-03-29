@@ -29,13 +29,13 @@ auth_router.get(
   passport.authenticate("google"),
   (req, res) => {
     //  Redirect to root :fire:.
-    res.redirect("/api/current_user");
+    res.redirect("/surveys");
   }
 );
 
-auth_router.get("/logout", (req, res) => {
+auth_router.get("/api/logout", (req, res) => {
   req.logout();
-  res.send("You are log out! :rocket:");
+  res.redirect("/");
 });
 
 auth_router.get("/api/current_user", (req, res) => {

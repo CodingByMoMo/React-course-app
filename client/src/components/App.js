@@ -7,14 +7,12 @@ import * as actions from "../actions/index.js";
 
 //  import Components
 import Header from "./Header.js";
+import Landing from "./Landing.js";
 const Dashboard = () => {
   return <h2>Dashboard</h2>;
 };
 const Survey_new = () => {
   return <h2>New Survey!</h2>;
-};
-const Landing = () => {
-  return <h2>Landing page</h2>;
 };
 
 class App extends Component {
@@ -24,7 +22,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <BrowserRouter>
           <div>
             {/*  Page wrapper  */}
