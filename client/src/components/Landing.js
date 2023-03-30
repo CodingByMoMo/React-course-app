@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+/**
+ * @author CodingByMoMo
+ * @description Component Showing some Content on Landing page.
+ * @class Landing
+ * @extends {Component}
+ */
 class Landing extends Component {
   render() {
     return (

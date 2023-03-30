@@ -11,11 +11,10 @@ import reducers from "./reducers/index.js";
 //  Import MaterializeCSS
 import "materialize-css/dist/css/materialize.min.css";
 
-
-
 //  Create store for Redux
 const store = legacy_createStore(reducers, {}, applyMiddleware(reduxThunk));
 
+//  Create A Root DOM element for React to Render.
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -24,4 +23,6 @@ root.render(
   </Provider>
 );
 
+// Web Vitals library to monitor app performance.
+// To start measuring pass "console.log()" as parameter to function below.
 reportWebVitals();

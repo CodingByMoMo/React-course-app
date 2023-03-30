@@ -2,7 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+
+/**
+ * @author CodingByMoMo
+ * @description Header of the App with navigation.
+ * @class Header
+ * @extends {Component}
+ */
 class Header extends Component {
+  /**
+   * @description Decides what options in navigation shown to the user.
+   * @return {JSX} 
+   * @memberof Header
+   */
   render_content() {
     switch (this.props.auth) {
       case null:
@@ -22,6 +34,10 @@ class Header extends Component {
     }
   }
 
+  /**
+   * @return {JSX} 
+   * @memberof Header
+   */
   render() {
     console.log(this.props);
     return (
@@ -43,8 +59,10 @@ class Header extends Component {
   }
 }
 
+// Map state to component props.
 function map_state_to_props({ auth }) {
   return { auth };
 }
 
+//  Connect App to the Redux Store.
 export default connect(map_state_to_props)(Header);
