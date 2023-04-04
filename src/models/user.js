@@ -12,6 +12,7 @@ const new_user_schema = () => {
    */
   const user_schema = new Schema({
     googleId: String,
+    credits: { type: Number, default: 0 },
   });
   // Save schema under model named "users".
   mongoose.model("users", user_schema);

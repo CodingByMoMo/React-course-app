@@ -29,7 +29,7 @@ class Header extends Component {
       default:
         return [
           <li key={"1001"}><Stripe_billing /></li>,
-          <li key={"1003"}>Credits: <span>5</span></li>,
+          <li key={"1003"}>Credits: <span>{this.props.auth.credits}</span></li>,
           <li key={"1002"}><a href="/api/logout">Logout</a></li>,
         ];
     }
