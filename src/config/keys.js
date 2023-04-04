@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
   stripe_public_key = process.env.STRIPE_PUBLISHABLE_KEY;
   stripe_secret_key = process.env.STRIPE_SECRET_KEY;
 } else {
-  //Data set for developer envaiorment.
+  //Data set for developer environment.
   google_client_ID = google_client_ID_dev;
   google_client_secret = google_client_secret_dev;
   mongoDB_base_URI = mongoDB_base_URI_dev;
@@ -39,5 +39,7 @@ export {
   mongoDB_base_URI,
   cookie_key,
   callback_URL,
+  stripe_public_key,
+  stripe_secret_key,
 };
 // {cookieKey,google_client_ID, google_client_secret, mongoDB_base_URI}

@@ -23,6 +23,9 @@ root.render(
   </Provider>
 );
 
+console.log("KEY: ", process.env.REACT_APP_STRIPE_KEY);
+console.log("ENV: ", process.env.NODE_ENV);
+
 // Web Vitals library to monitor app performance.
 // To start measuring pass "console.log()" as parameter to function below.
 reportWebVitals();
