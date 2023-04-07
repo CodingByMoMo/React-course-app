@@ -4,9 +4,11 @@ import { new_user_schema } from "./models/user.js";
 import { mongoDB_base_URI } from "./config/keys.js";
 import { passport_config } from "./service/passport.js";
 import { auth_router } from "./routes/authRoutes.js ";
+import { billing_router } from "./routes/billingRoutes.js";
 import cookieSession from "cookie-session";
 import { cookie_key } from "./config/keys.js";
 import passport from "passport";
+import bodyParser from "body-parser";
 
 //  Inti connection with MongoDB
 mongoose.connect(mongoDB_base_URI);
@@ -28,8 +30,10 @@ app.use(cookieSession({
 //  Init passport session.
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 //  Use authentication route.
 app.use(auth_router);
+app.use(billing_router);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
