@@ -9,6 +9,7 @@ import cookieSession from "cookie-session";
 import { cookie_key } from "./config/keys.js";
 import passport from "passport";
 import bodyParser from "body-parser";
+import * as path from 'path';
 
 //  Inti connection with MongoDB
 mongoose.connect(mongoDB_base_URI);
@@ -34,6 +35,16 @@ app.use(bodyParser.json());
 //  Use authentication route.
 app.use(auth_router);
 app.use(billing_router);
+
+if(process.env.NODE_ENV === "production"){
+    //  Serve up Production assets.
+    app.use(express.static("client/build"));
+
+     //  Server will give user the html file if route is not recognized.
+    app.get("*", (req,res) => {
+        res.sendFile(path.resolve(__dirname,"client", "build", "index.html"))
+    });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
