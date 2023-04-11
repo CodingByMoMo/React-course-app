@@ -10,11 +10,6 @@ auth_router.use((req, res, next) => {
   next();
 });
 
-//  Create a new root route.
-auth_router.get("/", (req, res, next) => {
-  res.send("Hello World 🔥");
-});
-
 //  Crate a auth route for google and execute passport authenticate.
 auth_router.get(
   "/auth/google",
