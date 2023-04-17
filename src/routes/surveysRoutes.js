@@ -1,7 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
+import Mailer from "../service/Mailer.js";
 import check_user_aut from "../middlewares/requireLogin.js";
 import check_user_credits from "../middlewares/creditsChecks.js";
+import email_template from "../service/emailTemplates.js";
 
 const Survey = mongoose.model("surveys");
 
@@ -27,6 +29,10 @@ surveys_router.post(
       _user: req.user.id,
       date_sent: Date.now(),
     });
+
+    const mailer = new Mailer(survey, email_template(survey));
+    mailer.send();
+    //  Send Mail.
   }
 );
 
