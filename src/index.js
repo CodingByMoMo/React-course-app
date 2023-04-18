@@ -1,10 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
-import { new_user_schema } from "./models/user.js";
-import new_surveys_schema from "./models/surveys.js";
 import { mongoDB_base_URI } from "./config/keys.js";
 import { passport_config } from "./service/passport.js";
-import { auth_router } from "./routes/authRoutes.js ";
+import auth_router from "./routes/authRoutes.js ";
 import { billing_router } from "./routes/billingRoutes.js";
 import surveys_router from "./routes/surveysRoutes.js";
 import cookieSession from "cookie-session";
@@ -12,13 +10,13 @@ import { cookie_key } from "./config/keys.js";
 import passport from "passport";
 import bodyParser from "body-parser";
 import * as path from 'path';
+import { new_user_schema } from "./models/user.js";
 
 //  Inti connection with MongoDB
 mongoose.connect(mongoDB_base_URI);
 
 // Crate data Schema.
 new_user_schema();
-new_surveys_schema();
 
 //  Configure passport.
 passport_config();
@@ -36,9 +34,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 //  Use authentication route.
+app.use(surveys_router);
 app.use(auth_router);
 app.use(billing_router);
-app.use(surveys_router);
+
 
 if(process.env.NODE_ENV === "production"){
     //  Serve up Production assets.

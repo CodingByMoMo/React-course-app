@@ -1,12 +1,12 @@
-import sendGrid from "sendgrid";
-import { send_grid_key } from "../config/keys";
-const Helper = sendGrid.mail;
+import sendgrid from "sendgrid";
+import { send_grid_key } from "../config/keys.js";
+const Helper = sendgrid.mail;
 
 class Mailer extends Helper.Mail {
     constructor({ subject, recipients}, content) {
         super();
 
-        this.sgApi = sendGrid(send_grid_key);
+        this.sgApi = sendgrid(send_grid_key);
         this.from_email = new Helper.Email('bartek@momocodes.com');
         this.subject = subject;
         this.body = new Helper.Content('text/html', content);
@@ -45,7 +45,7 @@ class Mailer extends Helper.Mail {
             path: "/v3/mail/send",
             body: this.toJSON(),
         });
-        const response = this.sgApi.API(request);
+        const response = await this.sgApi.API(request);
         return response;
     }
 }
