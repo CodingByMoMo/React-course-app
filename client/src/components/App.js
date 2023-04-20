@@ -9,10 +9,7 @@ import * as actions from "../actions/index.js";
 import Header from "./Header.js";
 import Landing from "./Landing.js";
 import Dashboard from "./Dashboard.js";
-//  List of Dummy Components
-const Survey_new = () => {
-  return <h2>New Survey!</h2>;
-};
+import Survey_new from "./Form/Survey_new.js";
 
 /**
  * @author CodingByMoMo
