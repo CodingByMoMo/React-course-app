@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import Survey_field from "./Survey_field";
+import validate_emails from "../../utils/validate_emails.js"
 
 const FIELDS = [
   { label: "Survey Title", name: "title", type: "text" },
@@ -31,7 +32,7 @@ class Survey_form extends Component {
         <div className="col s2"></div>
         <div className="col s8">
           <form
-            onSubmit={this.props.handleSubmit((values) => console.log(values))}
+            onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}
           >
             {this.render_fields()}
             <div>
@@ -56,12 +57,13 @@ class Survey_form extends Component {
 function validate(values) {
   const errors = {};
 
+  errors.recipients = validate_emails(values.recipients || "");
+
   _.each(FIELDS, (field) => {
     if(!values[field.name]) {
       errors[field.name] = "You must provide a " + field.label;
     }
   })
-  
 
   return errors;
 }
