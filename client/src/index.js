@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { legacy_createStore, applyMiddleware } from "redux";
+import { legacy_createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
 //  Import files and components.
 import App from "./components/App.js";
@@ -16,7 +16,8 @@ import axios from "axios";
 window.axios = axios;
 
 //  Create store for Redux
-const store = legacy_createStore(reducers, {}, applyMiddleware(reduxThunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = legacy_createStore(reducers, {}, composeEnhancers(applyMiddleware(reduxThunk)));
 
 //  Create A Root DOM element for React to Render.
 const root = ReactDOM.createRoot(document.getElementById("root"));

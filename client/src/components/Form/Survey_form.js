@@ -4,13 +4,7 @@ import _ from "lodash";
 import { Link } from "react-router-dom";
 import Survey_field from "./Survey_field";
 import validate_emails from "../../utils/validate_emails.js"
-
-const FIELDS = [
-  { label: "Survey Title", name: "title", type: "text" },
-  { label: "Email Subject", name: "subject", type: "text" },
-  { label: "Email Body", name: "body", type: "text" },
-  { label: "Recipients List", name: "recipients", type: "textArea" },
-];
+import FIELDS from "./form_fields";
 
 class Survey_form extends Component {
   render_fields() {
@@ -37,7 +31,7 @@ class Survey_form extends Component {
             {this.render_fields()}
             <div>
               <Link to="/surveys" className="btn waves-effect waves-light indigo darken-2 left">
-                Cancel <i className="material-icons right">close</i>
+                Cancel <i className="material-icons left">close</i>
               </Link>
               <button
                 className="btn waves-effect waves-light indigo darken-2 right"
@@ -69,6 +63,8 @@ function validate(values) {
 }
 
 export default reduxForm({
-  validate,
   form: "surveyForm",
+  validate,
+  destroyOnUnmount: false,
+  enableReinitialize: true
 })(Survey_form);
