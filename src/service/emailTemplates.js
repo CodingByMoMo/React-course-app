@@ -1,5 +1,3 @@
-import { redirect_URL } from "../config/keys.js";
-
 export default function email_template(survey) {
     return `
         <html>
@@ -9,10 +7,10 @@ export default function email_template(survey) {
                     <p>Please answer the following question:</p>
                     <p>${survey.body}</p>
                     <div>
-                        <a href="${redirect_URL}">Yes</a>
+                        <a href="/api/surveys/${survey.id}/yes">Yes</a>
                     </div>
                     <div>
-                        <a href="${redirect_URL}">No</a>
+                        <a href="/api/surveys/${survey.id}/no">No</a>
                     </div>
                 </div>
             </body>

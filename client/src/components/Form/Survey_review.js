@@ -19,7 +19,7 @@ function Survey_review({ onCancel, formValues, submitSurvey, history }) {
     <div className="row">
       <div className="col s2"></div>
       <div className="col s8">
-        <h5>Please Confirm your entries</h5>
+        <h5>Please Confirm Your Entries!</h5>
         <div>{review_field_list}</div>
         <button
           className="btn waves-effect waves-light indigo darken-2 left"

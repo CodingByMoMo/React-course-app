@@ -44,6 +44,10 @@ surveys_router.post(
   }
 );
 
+surveys_router.post("/api/surveys/webhook", (req,res) => {
+  console.log(req.body);
+})
+
 surveys_router.get("/thanks", (req,res) => {
   res.send("Thanks for Voting!");
 });

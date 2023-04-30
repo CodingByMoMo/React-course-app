@@ -16,7 +16,6 @@ var callback_URL = "https://app.momocodes.com/auth/google/callback";
 var stripe_public_key = "";
 var stripe_secret_key = "";
 var send_grid_key = "";
-var redirect_URL = "";
 
 if (process.env.NODE_ENV === "production") {
   //Data Set for production.
@@ -27,7 +26,6 @@ if (process.env.NODE_ENV === "production") {
   stripe_public_key = process.env.STRIPE_PUBLISHABLE_KEY;
   stripe_secret_key = process.env.STRIPE_SECRET_KEY;
   send_grid_key = process.env.SEND_GRID_KEY;
-  redirect_URL = "https://app.momocode.com/thanks";
 } else {
   //Data set for developer environment.
   google_client_ID = google_client_ID_dev;
@@ -37,7 +35,6 @@ if (process.env.NODE_ENV === "production") {
   stripe_public_key = stripe_public_key_dev;
   stripe_secret_key = stripe_secret_key_dev;
   send_grid_key = send_grid_key_dev;
-  redirect_URL = "http://localhost:3000/thanks";
 }
 
 export {
@@ -49,6 +46,5 @@ export {
   stripe_public_key,
   stripe_secret_key,
   send_grid_key,
-  redirect_URL,
 };
 // {cookieKey,google_client_ID, google_client_secret, mongoDB_base_URI}
