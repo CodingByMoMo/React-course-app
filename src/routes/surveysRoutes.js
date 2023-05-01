@@ -49,23 +49,28 @@ surveys_router.post(
 
 surveys_router.post("/api/surveys/webhook", (req, res) => {
   console.log(req.body);
-  const events = _.map(req.body, ({url, email, event}) => {
-    if (event == "click") {
-      const path_name = new URL(url).pathname;
-      const parser = new Path("/api/surveys/:survey_Id/:choice");
-      const match = parser.test(path_name);
-      if (match) {
-        return {
-          email: email,
-          survey: match.survey_Id,
-          choice: match.choice,
-        };
+  const parser = new Path("/api/surveys/:survey_Id/:choice");
+
+  const events = _.chain(req.body)
+    .map(({ url, email, event }) => {
+      if (event == "click") {
+        const match = parser.test(new URL(url).pathname);
+        if (match) {
+          return {
+            email: email,
+            survey: match.survey_Id,
+            choice: match.choice,
+          };
+        }
+      } else {
+        return undefined;
       }
-    } else {
-      return undefined;
-    }
-  });
-  console.log("events: ", events);
+    })
+    .compact()
+    .uniqBy("email", "survey")
+    .value();
+
+    console.log(events);
 });
 
 surveys_router.get("/thanks", (req, res) => {
