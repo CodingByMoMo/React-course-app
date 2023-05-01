@@ -1,3 +1,5 @@
+import {email_url} from "../config/keys.js";
+
 export default function email_template(survey) {
     return `
         <html>
@@ -7,10 +9,10 @@ export default function email_template(survey) {
                     <p>Please answer the following question:</p>
                     <p>${survey.body}</p>
                     <div>
-                        <a href="/api/surveys/${survey.id}/yes">Yes</a>
+                        <a href="${email_url}/api/surveys/${survey.id}/yes">Yes</a>
                     </div>
                     <div>
-                        <a href="/api/surveys/${survey.id}/no">No</a>
+                        <a href="${email_url}/api/surveys/${survey.id}/no">No</a>
                     </div>
                 </div>
             </body>
