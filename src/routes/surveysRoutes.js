@@ -68,9 +68,23 @@ surveys_router.post("/api/surveys/webhook", (req, res) => {
     })
     .compact()
     .uniqBy("email", "survey")
+    .each(({email, survey, choice}) => {
+      Survey.updateOne(
+        {
+          _id: survey,
+          recipients: {
+            $elemMatch: { email: email, responded: false },
+          },
+        },
+        {
+          $inc: { [choice]: 1 },
+          $set: { "recipients.$.responded": true },
+        }
+      ).exec();
+    })
     .value();
 
-    console.log(events);
+  console.log(events);
 });
 
 surveys_router.get("/thanks", (req, res) => {
