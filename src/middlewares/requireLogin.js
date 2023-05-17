@@ -1,5 +1,3 @@
-import express from "express";
-
 const check_user_aut = function (req, res, next) {
     if (!req.user) {
         return res.status(401).send({ error: "You must be login to make this action." });

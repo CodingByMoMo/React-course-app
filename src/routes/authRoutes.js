@@ -37,4 +37,4 @@ auth_router.get("/api/current_user", (req, res) => {
   res.send(req.user);
 });
 
-export { auth_router };
+export default auth_router;

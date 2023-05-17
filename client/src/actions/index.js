@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER } from "./types.js";
+import { FETCH_USER,FETCH_SURVEYS } from "./types.js";
 
 /**
  * @author CodingByMoMo
@@ -13,10 +13,23 @@ export const fetch_user = () => async (dispatch) => {
 
 /**
  * @description Action to fetch user after payment was requested.
- * @param {*} token Stripe Token. 
+ * @param {*} token Stripe Token.
  * @returns {Object} User model.
  */
 export const handle_token = (token) => async (dispatch) => {
   const response = await axios.post("/api/stripe", token);
+  dispatch({ type: FETCH_USER, payload: response.data });
+};
+
+export const submitSurvey = (values, history) => async (dispatch) => {
+  const response = await axios.post("/api/surveys", values);
+
+  history.push('/surveys');
   dispatch({type: FETCH_USER, payload: response.data});
 };
+
+export const fetchSurveys = () => async dispatch => {
+  const res = await axios.get('/api/surveys');
+
+  dispatch({ type:FETCH_SURVEYS, payload:res.data})
+} 

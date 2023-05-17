@@ -8,13 +8,8 @@ import * as actions from "../actions/index.js";
 //  import Components
 import Header from "./Header.js";
 import Landing from "./Landing.js";
-//  List of Dummy Components
-const Dashboard = () => {
-  return <h2>Dashboard</h2>;
-};
-const Survey_new = () => {
-  return <h2>New Survey!</h2>;
-};
+import Dashboard from "./Dashboard.js";
+import Survey_new from "./Form/Survey_new.js";
 
 /**
  * @author CodingByMoMo
