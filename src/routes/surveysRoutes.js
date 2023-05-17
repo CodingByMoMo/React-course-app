@@ -11,8 +11,11 @@ import { URL } from "url";
 
 const surveys_router = express.Router();
 
-surveys_router.get("/api/surveys", (req, res) => {
-  res.send("surveys");
+surveys_router.get("/api/surveys", check_user_aut, async (req, res) => {
+  const survey_list = await Survey.find({ _user: req.user.id }).select({
+    recipients: false,
+  });
+  res.send(survey_list);
 });
 
 surveys_router.post(
@@ -20,6 +23,7 @@ surveys_router.post(
   check_user_aut,
   check_user_credits,
   async (req, res) => {
+    console.log(req.body);
     const { title, subject, body, recipients } = req.body;
     const survey = new Survey({
       title,
@@ -29,7 +33,8 @@ surveys_router.post(
         email: email.trim(),
       })),
       _user: req.user.id,
-      date_sent: Date.now(),
+      dateSent: new Date(),
+      lastResponded: new Date(),
     });
 
     //  Send Mail.
@@ -68,7 +73,7 @@ surveys_router.post("/api/surveys/webhook", (req, res) => {
     })
     .compact()
     .uniqBy("email", "survey")
-    .each(({email, survey, choice}) => {
+    .each(({ email, survey, choice }) => {
       Survey.updateOne(
         {
           _id: survey,
@@ -79,6 +84,7 @@ surveys_router.post("/api/surveys/webhook", (req, res) => {
         {
           $inc: { [choice]: 1 },
           $set: { "recipients.$.responded": true },
+          lastResponded: new Date(),
         }
       ).exec();
     })
@@ -87,7 +93,7 @@ surveys_router.post("/api/surveys/webhook", (req, res) => {
   console.log(events);
 });
 
-surveys_router.get("/thanks", (req, res) => {
+surveys_router.get("/api/surveys/:survey_Id/:choice", (req, res) => {
   res.send("Thanks for Voting!");
 });
 
