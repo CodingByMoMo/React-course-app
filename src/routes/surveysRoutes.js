@@ -6,7 +6,7 @@ import check_user_credits from "../middlewares/creditsChecks.js";
 import email_template from "../service/emailTemplates.js";
 import Survey from "../models/surveys.js";
 import _ from "lodash";
-import { Path } from "path-parser";
+import { Path } from 'path-parser';
 import { URL } from "url";
 
 const surveys_router = express.Router();
@@ -23,7 +23,6 @@ surveys_router.post(
   check_user_aut,
   check_user_credits,
   async (req, res) => {
-    console.log(req.body);
     const { title, subject, body, recipients } = req.body;
     const survey = new Survey({
       title,

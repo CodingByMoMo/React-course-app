@@ -11,10 +11,6 @@ import reducers from "./reducers/index.js";
 //  Import MaterializeCSS
 import "materialize-css/dist/css/materialize.min.css";
 
-//  send grid testing code;
-import axios from "axios";
-window.axios = axios;
-
 //  Create store for Redux
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = legacy_createStore(reducers, {}, composeEnhancers(applyMiddleware(reduxThunk)));
