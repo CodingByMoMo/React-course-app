@@ -11,6 +11,11 @@ import passport from "passport";
 import bodyParser from "body-parser";
 import * as path from 'path';
 import { new_user_schema } from "./models/user.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 //  Inti connection with MongoDB
 mongoose.connect(mongoDB_base_URI);
