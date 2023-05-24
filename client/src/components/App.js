@@ -36,7 +36,7 @@ class App extends Component {
               {/*  Page Content wrapper  */}
               <Route exact path={"/"} component={Landing} />
               <Route exact path={"/surveys"} component={Dashboard} />
-              <Route exact path={"/surveys/new"} component={Survey_new} />
+              <Route path={"/surveys/new"} component={Survey_new} />
             </div>
           </div>
         </BrowserRouter>
