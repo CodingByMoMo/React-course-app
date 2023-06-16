@@ -1,6 +1,8 @@
 import passport from "passport";
 import mongoose from "mongoose";
 import { Strategy as Google_strategy } from "passport-google-oauth20";
+import { Strategy as Local_strategy } from "passport-local";
+import crypto from 'crypto';
 import {
   google_client_ID,
   google_client_secret,
@@ -62,6 +64,8 @@ const passport_config = () => {
       }
     )
   );
+
+  passport.use(new Local_strategy(User_class.authenticate()));
 };
 
 export { passport_config };
