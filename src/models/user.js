@@ -16,6 +16,7 @@ const new_user_schema = () => {
     auth_type: { type: String, required:true },
     username: { type: String, default: '', unique: true },
     password: { type: String, default: '' },
+    email: {type: String, default: '', unique: true},
     credits: { type: Number, default: 0 },
   });
   user_schema.plugin(passport_local_mongoose, { usernameField: 'username' });
