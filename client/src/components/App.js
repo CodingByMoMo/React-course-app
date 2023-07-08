@@ -10,6 +10,7 @@ import Header from "./Header.js";
 import Landing from "./Landing.js";
 import Dashboard from "./Dashboard.js";
 import Survey_new from "./Form/Survey_new.js";
+import Login_Page from "./Auth/Login_Page.js";
 
 /**
  * @author CodingByMoMo
@@ -36,6 +37,7 @@ class App extends Component {
               {/*  Page Content wrapper  */}
               <Route exact path={"/"} component={Landing} />
               <Route exact path={"/surveys"} component={Dashboard} />
+              <Route exact path={"/login"} component={Login_Page} />
               <Route path={"/surveys/new"} component={Survey_new} />
             </div>
           </div>

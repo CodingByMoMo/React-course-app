@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
 import Stripe_billing from "./Stripe";
 
 
@@ -21,11 +21,19 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return (
+        if (this.props.location.pathname === "/login" || this.props.location.pathname === "/register") {
+          return [
+            <li>
+              <a href="/">Home</a>
+            </li>
+          ];
+        } else {
+        return [
           <li>
-            <a href="/auth/google">Login</a>
+            <a href="/login">Login</a>
           </li>
-        );
+        ];
+      }
       default:
         return [
           <li key={"1001"}><Stripe_billing /></li>,
@@ -66,4 +74,4 @@ function map_state_to_props({ auth }) {
 }
 
 //  Connect App to the Redux Store.
-export default connect(map_state_to_props)(Header);
+export default connect(map_state_to_props)(withRouter(Header));

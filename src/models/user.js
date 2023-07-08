@@ -1,5 +1,5 @@
-import mongoose, { Schema,PassportLocalSchema } from "mongoose";
-import * as passport_local_mongoose from 'passport-local-mongoose';
+import mongoose, { Schema } from "mongoose";
+import passport_local_mongoose from 'passport-local-mongoose';
 /**
  * @author CodingByMoMo
  * @description This function creates new schema for mongoDB Database.
