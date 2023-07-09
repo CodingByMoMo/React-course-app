@@ -53,7 +53,7 @@ auth_router.post("/login", (req, res) => {
   if (!req.body.password) res.json({ success: false, message: "No password was given."});
   passport.authenticate("local", (err, user, info)=>{
     if(err) res.json({success: false, message: err});
-    if(!user) res.json({success: false, message: "Username or password incorret"});
+    if(!user) res.json({success: false, message: "Username or password incorrect"});
     const token = jwt.sign({ userId: user._id, username }, secretkey, {expiresIn: "24h"});
     res.json({success: true, message: "User authenticated", token: token});
   })(req,res);

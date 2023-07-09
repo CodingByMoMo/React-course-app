@@ -23,13 +23,13 @@ class Header extends Component {
       case false:
         if (this.props.location.pathname === "/login" || this.props.location.pathname === "/register") {
           return [
-            <li>
+            <li key={"1000"}>
               <a href="/">Home</a>
             </li>
           ];
         } else {
         return [
-          <li>
+          <li key={"1000"}>
             <a href="/login">Login</a>
           </li>
         ];
