@@ -12,6 +12,7 @@ export const fetch_user = () => async (dispatch) => {
 };
 
 export const auth_local = (values) => async (dispatch) => {
+  console.log('Action Kicks.');
   const res = await axios.post("/login", values);
   if (res.data.success) {
     dispatch({ type: FETCH_USER, payload: res.data });

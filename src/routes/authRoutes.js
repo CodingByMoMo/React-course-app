@@ -49,6 +49,7 @@ auth_router.post("/register", (req,res) => {
 });
 
 auth_router.post("/login", (req, res) => {
+  console.log('Login hits.');
   if (!req.body.username) res.json({success: false, message: "No username was given."});
   if (!req.body.password) res.json({ success: false, message: "No password was given."});
   passport.authenticate("local", (err, user, info)=>{

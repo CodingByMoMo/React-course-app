@@ -47,8 +47,8 @@ class Login_Page extends Component {
 
               <div>
                 <h6 className="white-text">or Log with Google</h6>
-                <Link
-                  to="/auth/google"
+                <a
+                  href="/auth/google"
                   className="google-button black-text center-align waves-effect waves-light btn-large white"
                 >
                   <img
@@ -57,7 +57,7 @@ class Login_Page extends Component {
                     className="google-logo left circle"
                   ></img>
                   <span>Sing with Google</span>
-                </Link>
+                </a>
               </div>
             </div>
             <span className="center-align black-text">
